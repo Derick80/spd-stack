@@ -13,9 +13,9 @@ export const loader: LoaderFunction = async ({ request }) => {
   const rss = `
     <rss xmlns:blogChannel="${blogUrl}" version="2.0">
       <channel>
-        <title>My Blog</title>
+        <title>my first post</title>
         <link>${blogUrl}</link>
-        <description>My Blog</description>
+        <description>this is my first post</description>
         <language>en-us</language>
         <ttl>40</ttl>
         ${posts
@@ -37,7 +37,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 
             return `
             <item>
-              <title>${cdata(frontMatter.title ?? 'Untitled Post')}</title>
+              <title>my first post</title>
               <description>${cdata(
                 frontMatter.description ?? 'This post is... indescribable',
               )}</description>
