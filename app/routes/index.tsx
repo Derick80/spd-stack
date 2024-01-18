@@ -11,7 +11,6 @@ import BlogList from '~/components/blog-list'
 import { getMdxListItems } from '~/utils/mdx.server'
 import { getSeo } from '~/utils/seo'
 
-type LoaderData = { blogList: Awaited<ReturnType<typeof getMdxListItems>> }
 
 const [seoMeta, seoLinks] = getSeo()
 
