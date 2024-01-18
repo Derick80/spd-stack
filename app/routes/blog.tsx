@@ -40,7 +40,7 @@ export const headers: HeadersFunction = ({ loaderHeaders }) => {
 export const loader: LoaderFunction = async () => {
   const blogList = await getMdxListItems({ contentDirectory: 'blog' })
 
-  return json<LoaderData>(
+  return json(
     { blogList },
     {
       headers: { 'cache-control': 'private, max-age=60', Vary: 'Cookie' },
@@ -48,12 +48,12 @@ export const loader: LoaderFunction = async () => {
   )
 }
 
-export default function Blog() {
-  const { blogList } = useLoaderData<LoaderData>()
+export default function Blog () {
+  const { blogList } = useLoaderData<typeof loader>()
 
   return (
     <section className='mx-auto min-h-screen max-w-4xl pt-24'>
-      <BlogList blogList={blogList} />
+      <BlogList blogList={ blogList } />
     </section>
   )
 }

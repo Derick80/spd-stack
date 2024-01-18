@@ -34,14 +34,14 @@ export const headers: HeadersFunction = ({ loaderHeaders }) => {
 export const loader: LoaderFunction = async () => {
   const blogList = await getMdxListItems({ contentDirectory: 'blog' })
 
-  return json<LoaderData>(
+  return json(
     { blogList: blogList.slice(0, 10) },
     { headers: { 'cache-control': 'private, max-age=60' } },
   )
 }
 
-export default function Index() {
-  const { blogList } = useLoaderData<LoaderData>()
+export default function Index () {
+  const { blogList } = useLoaderData<typeof loader>()
 
   return (
     <>
@@ -58,18 +58,18 @@ export default function Index() {
           <h2 className='text-xl text-gray-800 dark:text-gray-100'>
             Recent Posts
           </h2>
-          <BlogList blogList={blogList} />
+          <BlogList blogList={ blogList } />
         </div>
       </section>
     </>
   )
 }
 
-function GradientText(props: React.HTMLAttributes<HTMLSpanElement>) {
+function GradientText (props: React.HTMLAttributes<HTMLSpanElement>) {
   return (
     <span
       className='bg-gradient-to-r from-sky-600 via-pink-500 to-red-600 bg-clip-text text-center text-6xl leading-snug text-transparent dark:via-blue-400 dark:to-green-300'
-      {...props}
+      { ...props }
     />
   )
 }
