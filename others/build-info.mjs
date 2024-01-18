@@ -34,7 +34,7 @@ async function run() {
   }
 
   fs.writeFileSync(
-    path.resolve('../public/build/info.json'),
+    path.resolve('./public/build/info.json'),
     JSON.stringify(data, null, 2),
   )
 }
