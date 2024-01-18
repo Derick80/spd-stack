@@ -16,7 +16,7 @@ auto_rollback = true
 [build]
 
 [env]
-DATABASE_URL = "file:/data/sqlite.db"
+DATABASE_URL = "file:/data.db"
 PORT = "8080"
 
 [[mounts]]

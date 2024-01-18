@@ -38,8 +38,7 @@ async function postJSON({
     const searchParams = new URLSearchParams([
       ['_data', 'routes/_content/refresh-content'],
     ] )
-    const appName = process.env.FLY_APP_NAME
-    console.log( appName, 'appName' )
+
     const options = {
       hostname: `${process.env.FLY_APP_NAME}.fly.dev`,
       port: 443,
