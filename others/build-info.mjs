@@ -5,13 +5,16 @@ import fetch from 'node-fetch'
 
 const SHA = process.env.COMMIT_SHA
 
+
+const { GITHUB_REPOSITORY } = process.env
+
 async function getCommitInfo() {
   try {
     const response = await fetch(
-      `https://api.github.com/repos/${process.env.GITHUB_REPOSITORY}/commits/${SHA}`,
+      `https://api.github.com/repos/Derick80/spd-stack/commits/${SHA}`,
     )
     const data = await response.json()
-
+console.log(data,'data');
     return {
       author: data.commit.author.name,
       timestamp: data.commit.author.date,
@@ -31,7 +34,7 @@ async function run() {
   }
 
   fs.writeFileSync(
-    path.join(__dirname, '../public/build/info.json'),
+    path.resolve(__dirname, '../public/build/info.json'),
     JSON.stringify(data, null, 2),
   )
 }
