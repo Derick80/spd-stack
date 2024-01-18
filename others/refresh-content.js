@@ -3,7 +3,8 @@ const { fetchJSON, getChangedFiles, postJSON } = require('./utils')
 async function go() {
   const compareSha = process.env.GITHUB_SHA
   const tstAppName = process.env.FLY_APP_NAME
-  console.log(tstAppName,'tstAppName');
+  console.log( tstAppName, 'tstAppName' )
+
   const shaInfo = await fetchJSON({
     url: `https://${process.env.FLY_APP_NAME}.fly.dev/_content/refresh-content.json`,
   })
