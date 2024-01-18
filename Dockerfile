@@ -50,6 +50,9 @@ ARG GITHUB_REPOSITORY
 ENV GITHUB_REPOSITORY=$GITHUB_REPOSITORY
 ENV NODE_ENV=production
 
+RUN echo "#!/bin/sh\nset -x\nsqlite3 \$DATABASE_URL" > /usr/local/bin/database-cli && chmod +x /usr/local/bin/database-cli
+
+
 RUN mkdir /app
 WORKDIR /app
 
