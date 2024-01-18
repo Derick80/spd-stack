@@ -1,5 +1,5 @@
 # base node image
-FROM node:16-alpine-bullseye-slim as base
+FROM node:18-alpine-bullseye-slim as base
 
 # Install openssl for Prisma
 RUN apt-get update && apt-get install -y openssl
