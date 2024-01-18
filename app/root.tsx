@@ -1,5 +1,3 @@
-import { SkipNavContent, SkipNavLink } from '@reach/skip-nav'
-import skipNavStyles from '@reach/skip-nav/styles.css'
 import {
   Links,
   LiveReload,
@@ -23,7 +21,6 @@ type LoaderData = { theme: Theme | null }
 
 export const links: LinksFunction = () => {
   return [
-    { rel: 'stylesheet', href: skipNavStyles },
     { rel: 'stylesheet', href: appStyles },
     {
       rel: 'preload',
@@ -50,11 +47,11 @@ export const loader: LoaderFunction = async ({ request }) => {
   return json<LoaderData>({ theme: getTheme() })
 }
 
-function App() {
+function App () {
   const [theme] = useTheme()
 
   return (
-    <html lang='en' className={`h-full ${theme ? theme : 'dark'}`}>
+    <html lang='en' className={ `h-full ${theme ? theme : 'dark'}` }>
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width,initial-scale=1' />
@@ -63,16 +60,14 @@ function App() {
         <Links />
       </head>
       <body className='h-full bg-white dark:bg-slate-800'>
-        <SkipNavLink className='bg-gray-700'>Skip to content</SkipNavLink>
         <div className='flex h-full flex-col'>
           <Nav />
           <main className='flex-1 px-6'>
-            <SkipNavContent />
             <Outlet />
           </main>
           <Footer />
         </div>
-        <SsrTheme serverTheme={!!theme} />
+        <SsrTheme serverTheme={ !!theme } />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
@@ -81,11 +76,11 @@ function App() {
   )
 }
 
-export default function AppProviders() {
+export default function AppProviders () {
   const { theme } = useLoaderData<LoaderData>()
 
   return (
-    <ThemeProvider ssrTheme={theme}>
+    <ThemeProvider ssrTheme={ theme }>
       <App />
     </ThemeProvider>
   )

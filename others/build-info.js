@@ -1,6 +1,7 @@
-const path = require('path')
-const fs = require('fs')
-const fetch = require('node-fetch')
+import fs from 'fs'
+import path from 'path'
+
+import fetch from 'node-fetch'
 
 const SHA = process.env.COMMIT_SHA
 
